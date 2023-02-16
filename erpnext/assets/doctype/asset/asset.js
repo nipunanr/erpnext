@@ -132,6 +132,10 @@ frappe.ui.form.on('Asset', {
 				}, __("Manage"));
 			}
 
+			if (frm.doc.depr_entry_posting_status === "Failed") {
+				frm.trigger("set_depr_posting_failure_alert");
+			}
+
 			frm.trigger("setup_chart");
 		}
 
@@ -140,6 +144,19 @@ frappe.ui.form.on('Asset', {
 		if (frm.doc.docstatus == 0) {
 			frm.toggle_reqd("finance_books", frm.doc.calculate_depreciation);
 		}
+	},
+
+	set_depr_posting_failure_alert: function (frm) {
+		const alert = `
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<span class="indicator whitespace-nowrap red">
+						<span>Failed to post depreciation entries</span>
+					</span>
+				</div>
+			</div>`;
+
+		frm.dashboard.set_headline_alert(alert);
 	},
 
 	toggle_reference_doc: function(frm) {
@@ -184,39 +201,58 @@ frappe.ui.form.on('Asset', {
 		})
 	},
 
-	setup_chart: function(frm) {
-		var x_intervals = [frm.doc.purchase_date];
-		var asset_values = [frm.doc.gross_purchase_amount];
-		var last_depreciation_date = frm.doc.purchase_date;
-
-		if(frm.doc.opening_accumulated_depreciation) {
-			last_depreciation_date = frappe.datetime.add_months(frm.doc.next_depreciation_date,
-				-1*frm.doc.frequency_of_depreciation);
-
-			x_intervals.push(last_depreciation_date);
-			asset_values.push(flt(frm.doc.gross_purchase_amount) -
-				flt(frm.doc.opening_accumulated_depreciation));
+	setup_chart: async function(frm) {
+		if(frm.doc.finance_books.length > 1) {
+			return
 		}
 
-		$.each(frm.doc.schedules || [], function(i, v) {
-			x_intervals.push(v.schedule_date);
-			var asset_value = flt(frm.doc.gross_purchase_amount) - flt(v.accumulated_depreciation_amount);
-			if(v.journal_entry) {
-				last_depreciation_date = v.schedule_date;
-				asset_values.push(asset_value);
-			} else {
-				if (in_list(["Scrapped", "Sold"], frm.doc.status)) {
-					asset_values.push(null);
-				} else {
-					asset_values.push(asset_value)
-				}
+		var x_intervals = [frappe.format(frm.doc.purchase_date, { fieldtype: 'Date' })];
+		var asset_values = [frm.doc.gross_purchase_amount];
+
+		if(frm.doc.calculate_depreciation) {
+			if(frm.doc.opening_accumulated_depreciation) {
+				var depreciation_date = frappe.datetime.add_months(
+					frm.doc.finance_books[0].depreciation_start_date,
+					-1 * frm.doc.finance_books[0].frequency_of_depreciation
+				);
+				x_intervals.push(frappe.format(depreciation_date, { fieldtype: 'Date' }));
+				asset_values.push(flt(frm.doc.gross_purchase_amount - frm.doc.opening_accumulated_depreciation, precision('gross_purchase_amount')));
 			}
-		});
+
+			$.each(frm.doc.schedules || [], function(i, v) {
+				x_intervals.push(frappe.format(v.schedule_date, { fieldtype: 'Date' }));
+				var asset_value = flt(frm.doc.gross_purchase_amount - v.accumulated_depreciation_amount, precision('gross_purchase_amount'));
+				if(v.journal_entry) {
+					asset_values.push(asset_value);
+				} else {
+					if (in_list(["Scrapped", "Sold"], frm.doc.status)) {
+						asset_values.push(null);
+					} else {
+						asset_values.push(asset_value);
+					}
+				}
+			});
+		} else {
+			if(frm.doc.opening_accumulated_depreciation) {
+				x_intervals.push(frappe.format(frm.doc.creation.split(" ")[0], { fieldtype: 'Date' }));
+				asset_values.push(flt(frm.doc.gross_purchase_amount - frm.doc.opening_accumulated_depreciation, precision('gross_purchase_amount')));
+			}
+
+			let depr_entries = (await frappe.call({
+				method: "get_manual_depreciation_entries",
+				doc: frm.doc,
+			})).message;
+
+			$.each(depr_entries || [], function(i, v) {
+				x_intervals.push(frappe.format(v.posting_date, { fieldtype: 'Date' }));
+				let last_asset_value = asset_values[asset_values.length - 1]
+				asset_values.push(last_asset_value - v.value);
+			});
+		}
 
 		if(in_list(["Scrapped", "Sold"], frm.doc.status)) {
-			x_intervals.push(frm.doc.disposal_date);
+			x_intervals.push(frappe.format(frm.doc.disposal_date, { fieldtype: 'Date' }));
 			asset_values.push(0);
-			last_depreciation_date = frm.doc.disposal_date;
 		}
 
 		frm.dashboard.render_graph({
