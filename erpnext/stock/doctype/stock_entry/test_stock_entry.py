@@ -18,8 +18,6 @@ from erpnext.stock.doctype.item.test_item import (
 from erpnext.stock.doctype.serial_no.serial_no import *  # noqa
 from erpnext.stock.doctype.stock_entry.stock_entry import (
 	FinishedGoodError,
-	audit_incorrect_valuation_entries,
-	get_incorrect_stock_entries,
 	move_sample_to_retention_warehouse,
 )
 from erpnext.stock.doctype.stock_entry.stock_entry_utils import make_stock_entry
@@ -1573,43 +1571,47 @@ class TestStockEntry(FrappeTestCase):
 
 		self.assertRaises(BatchExpiredError, se.save)
 
-	def test_audit_incorrect_stock_entries(self):
-		item_code = "Test Incorrect Valuation Rate Item - 001"
-		create_item(item_code=item_code, is_stock_item=1)
+	def test_negative_stock_reco(self):
+		from erpnext.controllers.stock_controller import BatchExpiredError
+		from erpnext.stock.doctype.batch.test_batch import make_new_batch
+
+		frappe.db.set_single_value("Stock Settings", "allow_negative_stock", 0)
+
+		item_code = "Test Negative Item - 001"
+		item_doc = create_item(item_code=item_code, is_stock_item=1, valuation_rate=10)
 
 		make_stock_entry(
 			item_code=item_code,
+			posting_date=add_days(today(), -3),
+			posting_time="00:00:00",
 			purpose="Material Receipt",
-			posting_date=add_days(nowdate(), -10),
-			qty=2,
-			rate=500,
+			qty=10,
 			to_warehouse="_Test Warehouse - _TC",
+			do_not_save=True,
 		)
 
-		transfer_entry = make_stock_entry(
+		make_stock_entry(
 			item_code=item_code,
-			purpose="Material Transfer",
-			qty=2,
-			rate=500,
+			posting_date=today(),
+			posting_time="00:00:00",
+			purpose="Material Receipt",
+			qty=8,
 			from_warehouse="_Test Warehouse - _TC",
-			to_warehouse="_Test Warehouse 1 - _TC",
+			do_not_save=True,
 		)
 
-		sle_name = frappe.db.get_value(
-			"Stock Ledger Entry", {"voucher_no": transfer_entry.name, "actual_qty": (">", 0)}, "name"
+		sr_doc = create_stock_reconciliation(
+			purpose="Stock Reconciliation",
+			posting_date=add_days(today(), -3),
+			posting_time="00:00:00",
+			item_code=item_code,
+			warehouse="_Test Warehouse - _TC",
+			valuation_rate=10,
+			qty=7,
+			do_not_submit=True,
 		)
 
-		frappe.db.set_value(
-			"Stock Ledger Entry", sle_name, {"modified": add_days(now(), -1), "stock_value_difference": 10}
-		)
-
-		stock_entries = get_incorrect_stock_entries()
-		self.assertTrue(transfer_entry.name in stock_entries)
-
-		audit_incorrect_valuation_entries()
-
-		stock_entries = get_incorrect_stock_entries()
-		self.assertFalse(transfer_entry.name in stock_entries)
+		self.assertRaises(frappe.ValidationError, sr_doc.submit)
 
 
 def make_serialized_item(**args):
