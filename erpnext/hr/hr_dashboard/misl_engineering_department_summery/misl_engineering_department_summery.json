@@ -1,0 +1,58 @@
+{
+ "cards": [
+  {
+   "card": "Total Employees"
+  },
+  {
+   "card": "New Joinees (Last year)"
+  },
+  {
+   "card": "Employees Left (Last year)"
+  },
+  {
+   "card": "Total Applicants (Last month)"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Attendance Count",
+   "width": "Full"
+  },
+  {
+   "chart": "Gender Diversity Ratio",
+   "width": "Half"
+  },
+  {
+   "chart": "Job Application Status",
+   "width": "Half"
+  },
+  {
+   "chart": "Designation Wise Employee Count",
+   "width": "Half"
+  },
+  {
+   "chart": "Department Wise Employee Count",
+   "width": "Half"
+  },
+  {
+   "chart": "Designation Wise Openings",
+   "width": "Half"
+  },
+  {
+   "chart": "Department Wise Openings",
+   "width": "Half"
+  }
+ ],
+ "creation": "2023-02-14 13:30:12.588370",
+ "dashboard_name": "MISL Engineering Department Summery",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2023-02-14 13:30:12.588370",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "MISL Engineering Department Summery",
+ "owner": "Administrator"
+}
