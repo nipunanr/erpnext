@@ -1,0 +1,358 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "HR-EWR-.YY.-.MM.-.#####",
+ "creation": "2023-03-15 15:52:10.625490",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "employee",
+  "employee_name",
+  "preferred_name",
+  "employee_user_name",
+  "department",
+  "column_break_2",
+  "leave_type",
+  "worked_on",
+  "work_from_date",
+  "work_from_time",
+  "work_end_date",
+  "work_end_time",
+  "half_day",
+  "half_day_date",
+  "column_break_4",
+  "reason",
+  "eligible_leave_days",
+  "leave_valid_till",
+  "extra_work_approval_section",
+  "extra_work_approver",
+  "extra_work_approver_name",
+  "extra_work_approver_user",
+  "column_break_ctxvl",
+  "extra_work_approver_status",
+  "extra_work_approval_date_time",
+  "leave_request_approval_section",
+  "leave_request_approver",
+  "leave_request_approver_name",
+  "leave_request_approver_user",
+  "column_break_9weru",
+  "leave_request_approval_status",
+  "leave_request_approval_date_time",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "leave_type",
+   "fieldtype": "Link",
+   "label": "Leave Type",
+   "options": "Leave Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "worked_on",
+   "fieldtype": "Section Break",
+   "label": "Worked On"
+  },
+  {
+   "fieldname": "work_from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Work From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "work_from_time",
+   "fieldtype": "Time",
+   "label": "Work From Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "work_end_date",
+   "fieldtype": "Date",
+   "label": "Work End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "work_end_time",
+   "fieldtype": "Time",
+   "label": "Work End Time",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "half_day",
+   "fieldtype": "Check",
+   "label": "Half Day"
+  },
+  {
+   "depends_on": "half_day",
+   "fieldname": "half_day_date",
+   "fieldtype": "Date",
+   "label": "Half Day Date"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status=='Pending Approval (EW)' || doc.status=='Pending Approval (Leave)'  || doc.status=='Extra Leave Approved'   || doc.status=='Rejected' || doc.status=='Extra Leave Rejected' ",
+   "fieldname": "extra_work_approval_section",
+   "fieldtype": "Section Break",
+   "label": "Extra Work Approval"
+  },
+  {
+   "fetch_from": "employee.reports_to",
+   "fieldname": "extra_work_approver",
+   "fieldtype": "Link",
+   "label": "Extra Work Approver",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "extra_work_approver.employee_name",
+   "fieldname": "extra_work_approver_name",
+   "fieldtype": "Data",
+   "label": "Extra Work Approver Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "extra_work_approver.user_id",
+   "fieldname": "extra_work_approver_user",
+   "fieldtype": "Link",
+   "label": "Extra Work Approver User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ctxvl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "extra_work_approver_status",
+   "fieldtype": "Select",
+   "label": "Extra Work Approver Status",
+   "options": "Pending\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "extra_work_approval_date_time",
+   "fieldtype": "Datetime",
+   "label": "Extra Work Approval Date Time"
+  },
+  {
+   "depends_on": "eval:doc.status=='Pending Approval (Leave)'  || doc.status=='Extra Leave Approved'   || doc.status=='Extra Leave Rejected' ",
+   "fieldname": "leave_request_approval_section",
+   "fieldtype": "Section Break",
+   "label": "Leave Request Approval"
+  },
+  {
+   "default": "EMP0001",
+   "fieldname": "leave_request_approver",
+   "fieldtype": "Link",
+   "label": "Leave Request Approver",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "leave_request_approver.employee_name",
+   "fieldname": "leave_request_approver_name",
+   "fieldtype": "Data",
+   "label": "Leave Request Approver Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "leave_request_approver.user_id",
+   "fieldname": "leave_request_approver_user",
+   "fieldtype": "Link",
+   "label": "Leave Request Approver User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_9weru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "leave_request_approval_status",
+   "fieldtype": "Select",
+   "label": "Leave Request Approval Status",
+   "options": "Pending\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leave_request_approval_date_time",
+   "fieldtype": "Datetime",
+   "label": "Leave Request Approval Date Time"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Extra Work Request Application",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "eligible_leave_days",
+   "fieldtype": "Float",
+   "label": "Eligible Leave Days",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "leave_valid_till",
+   "fieldtype": "Date",
+   "label": "Leave Valid Till",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Status"
+  },
+  {
+   "fetch_from": "employee.preferred_name",
+   "fieldname": "preferred_name",
+   "fieldtype": "Data",
+   "label": "Preferred Name"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "employee_user_name",
+   "fieldtype": "Link",
+   "label": "Employee User Name",
+   "options": "User"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Related Leave",
+   "link_doctype": "Leave Application",
+   "link_fieldname": "related_extra_work_request_application"
+  }
+ ],
+ "modified": "2023-04-24 11:38:22.185409",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Extra Work Request Application",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "work_from_date,work_from_time,work_end_date,work_end_time",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "employee_name",
+ "track_changes": 1
+}
