@@ -2,8 +2,8 @@
  "category": "Modules",
  "charts": [
   {
-   "chart_name": "Outgoing Salary",
-   "label": "Outgoing Salary"
+   "chart_name": "Attendance Count",
+   "label": "Attendance Count"
   }
  ],
  "creation": "2020-03-02 15:48:58.322521",
@@ -596,45 +596,41 @@
    "type": "Link"
   },
   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Interview Type",
-    "link_count": 0,
-    "link_to": "Interview Type",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
-   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Interview Round",
-    "link_count": 0,
-    "link_to": "Interview Round",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
-   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Interview",
-    "link_count": 0,
-    "link_to": "Interview",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
-   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Interview Feedback",
-    "link_count": 0,
-    "link_to": "Interview Feedback",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   },
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Type",
+   "link_to": "Interview Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Round",
+   "link_to": "Interview Round",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview",
+   "link_to": "Interview",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Interview Feedback",
+   "link_to": "Interview Feedback",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -881,8 +877,8 @@
    "type": "Link"
   }
  ],
- "modified": "2022-05-30 17:19:40.524444",
- "modified_by": "Administrator",
+ "modified": "2023-04-25 12:10:40.429553",
+ "modified_by": "technical@mislholdings.com",
  "module": "HR",
  "name": "HR",
  "onboarding": "Human Resource",

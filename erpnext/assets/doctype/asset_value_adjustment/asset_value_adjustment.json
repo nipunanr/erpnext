@@ -7,6 +7,7 @@
  "field_order": [
   "company",
   "asset",
+  "asset_name",
   "asset_category",
   "column_break_4",
   "date",
@@ -120,12 +121,18 @@
   {
    "fieldname": "column_break_11",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "asset.asset_name",
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "label": "Asset Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-01-22 14:10:23.085181",
+ "modified": "2023-03-30 14:26:14.606052",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset Value Adjustment",
