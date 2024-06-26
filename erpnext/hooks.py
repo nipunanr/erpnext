@@ -808,3 +808,10 @@ global_search_doctypes = {
 additional_timeline_content = {
 	"*": ["erpnext.telephony.doctype.call_log.call_log.get_linked_call_logs"]
 }
+
+website_context = {
+    "today_leave_employees": "erpnext.www.leave-calender.engineering.get_context",
+	"next_30_days_leave_employees": "erpnext.www.leave-calender.engineering.get_context",
+	"next_60_days_company_holidays": "erpnext.www.leave-calender.engineering.get_context",
+ 
+}
