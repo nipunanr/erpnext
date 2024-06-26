@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Engineering - Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      .card-header h2,
+      .card-header h5 {
+        margin: 0;
+      }
+      .card-header h5 {
+        font-size: 1rem;
+      }
+      table {
+        width: 100%;
+      }
+      th,
+      td {
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add a row -->
+    <div class="container my-4">
+      <!-- Add Row -->
+      <div class="row">
+        <div class="col-12">
+          <!-- Add Card -->
+          <div class="card text-bg-primary">
+            <h1 class="text-center py-2 m-0">Engineering Calendar</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Row -->
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 mb-4">
+          <div class="card border-primary">
+            <div class="card-header text-bg-primary">
+              <h2>On Leave Today</h2>
+              <h5>Date: {{ today }}</h5>
+            </div>
+            <div class="card-body">
+              <div id="leave-list">
+                {% if today_leave_employees %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Employee Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for employee in today_leave_employees %}
+                    <tr>
+                      <td>{{ employee.preferred_name }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% else %}
+                <p>No employees on leave today.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4">
+          <div class="card border-primary">
+            <div class="card-header text-bg-primary">
+              <h2>Upcoming Leaves</h2>
+              <h5>(Upcoming Year)</h5>
+            </div>
+            <div class="card-body">
+              <div id="upcoming-leave-list">
+                {% if next_30_days_leave_employees %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Employee Name</th>
+                      <th>From Date</th>
+                      <th>To Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for employee in next_30_days_leave_employees %}
+                    <tr>
+                      <td>{{ employee.preferred_name }}</td>
+                      <td>{{ employee.from_date }}</td>
+                      <td>{{ employee.to_date }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% else %}
+                <p>No upcoming leaves.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <div class="card border-primary">
+            <div class="card-header text-bg-primary">
+              <h2>Upcoming Holidays Sri Lanka</h2>
+              <h5>(Upcoming Year)</h5>
+            </div>
+            <div class="card-body">
+              <div id="upcoming-holiday-list">
+                {% if next_60_days_company_holidays %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for company_holidays in next_60_days_company_holidays %}
+                    <tr>
+                      <td>{{ company_holidays.holiday_date }}</td>
+                      <td>{{ company_holidays.description }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% else %}
+                <p>No upcoming holidays in the next 60 days.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Powered by MISLERP Footer -->
+      <footer class="row justify-content-center mt-4">
+        <div class="col-12 col-md-3">
+          <div class="card text-bg-primary text-center">
+            <img src="/files/MISL%20ERP%20Logo%20wh.png" class="mx-auto d-block my-2" style="height: 30px;" alt="MISLERP">
+            <p class="mb-1">Powered by MISLERP</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom JS -->
+    <script src="/assets/erpnext/www/today_leave_employees/today_leave_employees.js"></script>
+  </body>
+</html>
