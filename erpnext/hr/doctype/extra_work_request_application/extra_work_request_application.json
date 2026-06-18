@@ -15,12 +15,14 @@
   "employee_user_name",
   "department",
   "column_break_2",
+  "compensation_type",
   "leave_type",
   "worked_on",
   "work_from_date",
   "work_from_time",
   "work_end_date",
   "work_end_time",
+  "extra_working_hours",
   "half_day",
   "half_day_date",
   "column_break_4",
@@ -72,11 +74,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.compensation_type=='Leave Allocation'",
    "fieldname": "leave_type",
    "fieldtype": "Link",
    "label": "Leave Type",
-   "options": "Leave Type",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.compensation_type=='Leave Allocation'",
+   "options": "Leave Type"
   },
   {
    "fieldname": "worked_on",
@@ -231,17 +234,18 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.compensation_type=='Leave Allocation'",
    "fieldname": "eligible_leave_days",
    "fieldtype": "Float",
    "label": "Eligible Leave Days",
-   "precision": "2",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.compensation_type=='Leave Allocation'",
+   "precision": "2"
   },
   {
+   "depends_on": "eval:doc.compensation_type=='Leave Allocation'",
    "fieldname": "leave_valid_till",
    "fieldtype": "Date",
-   "label": "Leave Valid Till",
-   "reqd": 1
+   "label": "Leave Valid Till"
   },
   {
    "fieldname": "status",
@@ -261,6 +265,19 @@
    "fieldtype": "Link",
    "label": "Employee User Name",
    "options": "User"
+  },
+  {
+   "fieldname": "compensation_type",
+   "fieldtype": "Select",
+   "label": "Compensation Type",
+   "options": "Overtime Payment\nLeave Allocation"
+  },
+  {
+   "fieldname": "extra_working_hours",
+   "fieldtype": "Duration",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Extra Working Hours"
   }
  ],
  "is_submittable": 1,
@@ -271,7 +288,7 @@
    "link_fieldname": "related_extra_work_request_application"
   }
  ],
- "modified": "2023-04-24 11:38:22.185409",
+ "modified": "2025-02-07 15:34:19.588894",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Extra Work Request Application",

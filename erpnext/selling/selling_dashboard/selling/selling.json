@@ -29,6 +29,10 @@
   {
    "chart": "Item-wise Annual Sales",
    "width": "Full"
+  },
+  {
+   "chart": "Sales",
+   "width": "Half"
   }
  ],
  "creation": "2020-07-20 20:17:16.688162",
@@ -38,8 +42,8 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2020-07-22 15:31:22.299903",
- "modified_by": "Administrator",
+ "modified": "2024-06-26 11:29:34.929017",
+ "modified_by": "nipuna.r@mislholdings.com",
  "module": "Selling",
  "name": "Selling",
  "owner": "Administrator"

@@ -11,7 +11,7 @@
   "title",
   "naming_series",
   "company",
-  "customer",
+  "customer2",
   "currency",
   "exchange_rate",
   "sales_invoice",
@@ -275,12 +275,6 @@
    "options": "Project"
   },
   {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer"
-  },
-  {
    "fetch_from": "customer.default_currency",
    "fetch_if_empty": 1,
    "fieldname": "currency",
@@ -314,13 +308,19 @@
    "fieldname": "exchange_rate",
    "fieldtype": "Float",
    "label": "Exchange Rate"
+  },
+  {
+   "fieldname": "customer2",
+   "fieldtype": "Link",
+   "label": "Customer2",
+   "options": "Customer"
   }
  ],
  "icon": "fa fa-clock-o",
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-06-09 12:08:53.930200",
+ "modified": "2024-10-14 12:15:06.413043",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Timesheet",

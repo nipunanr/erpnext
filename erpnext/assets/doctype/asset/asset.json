@@ -79,9 +79,6 @@
    "options": "ACC-ASS-.YYYY.-"
   },
   {
-   "depends_on": "item_code",
-   "fetch_from": "item_code.item_name",
-   "fetch_if_empty": 1,
    "fieldname": "asset_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -515,7 +512,7 @@
    "table_fieldname": "accounts"
   }
  ],
- "modified": "2023-03-30 15:07:41.542374",
+ "modified": "2024-08-16 11:03:33.236832",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset",

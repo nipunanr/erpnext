@@ -516,7 +516,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-01-28 17:10:02.716760",
+ "modified": "2026-04-30 11:25:24.310090",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Selling",
@@ -556,8 +556,8 @@
   },
   {
    "label": "Dashboard",
-   "link_to": "Selling",
-   "type": "Dashboard"
+   "link_to": "sales-dashboard",
+   "type": "Page"
   }
  ],
  "shortcuts_label": "Quick Access"

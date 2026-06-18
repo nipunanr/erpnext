@@ -1,0 +1,22 @@
+{
+ "creation": "2024-05-21 09:48:11.021525",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "filters_json": "{\"company\":\"MISL Holdings (Pvt) Ltd\",\"report_date\":\"2024-05-21\",\"ageing_based_on\":\"Due Date\",\"range1\":30,\"range2\":60,\"range3\":90,\"range4\":120}",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "label": "Debit",
+ "modified": "2024-05-21 09:48:11.058020",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Debit",
+ "owner": "Administrator",
+ "report_field": "debit",
+ "report_function": "Sum",
+ "report_name": "Accounts Receivable Summary",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Report"
+}

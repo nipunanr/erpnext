@@ -58,7 +58,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Open\nReplied\nRejected\nHold\nAccepted",
+   "options": "Open\nReplied\nRejected\nHold\nShortlisted\n1st Interview Scheduled\n1st Interview Passed\nAccepted",
    "reqd": 1
   },
   {
@@ -139,14 +139,12 @@
    "fieldname": "lower_range",
    "fieldtype": "Currency",
    "label": "Lower Range",
-   "options": "currency",
    "precision": "0"
   },
   {
    "fieldname": "upper_range",
    "fieldtype": "Currency",
    "label": "Upper Range",
-   "options": "currency",
    "precision": "0"
   },
   {
@@ -192,11 +190,10 @@
  "idx": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-12 16:28:53.196881",
+ "modified": "2026-04-24 13:55:42.547442",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Job Applicant",
- "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -215,7 +212,6 @@
  "sender_field": "email_id",
  "sort_field": "modified",
  "sort_order": "ASC",
- "states": [],
  "subject_field": "notes",
  "title_field": "applicant_name"
 }

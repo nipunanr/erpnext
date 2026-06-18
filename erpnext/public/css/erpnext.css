@@ -40,6 +40,11 @@
   outline: none;
   text-align: right;
 }
+
+li.dropdown.dropdown.dropdown-help.dropdown-mobile {
+	display: none!important;
+}
+
 .assessment-result-tool th {
   white-space: nowrap;
   overflow: hidden;

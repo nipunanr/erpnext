@@ -1,0 +1,38 @@
+{
+ "content": null,
+ "creation": "2026-04-23 16:37:14.723656",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-06-18 16:51:14.495998",
+ "modified_by": "Administrator",
+ "module": "Selling",
+ "name": "sales-dashboard",
+ "owner": "Administrator",
+ "page_name": "sales-dashboard",
+ "roles": [
+  {
+   "role": "Sales Manager"
+  },
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Managing Director"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 1,
+ "title": "Sales Dashboard"
+}

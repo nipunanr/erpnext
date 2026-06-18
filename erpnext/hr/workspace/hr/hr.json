@@ -13,7 +13,7 @@
  "doctype": "Workspace",
  "extends_another_page": 0,
  "hide_custom": 0,
- "icon": "hr",
+ "icon": "website",
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
@@ -505,8 +505,8 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Vehicle Log",
-   "link_to": "Vehicle Log",
+   "label": "Mileage Details",
+   "link_to": "Mileage Details",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -877,8 +877,8 @@
    "type": "Link"
   }
  ],
- "modified": "2023-04-25 12:10:40.429553",
- "modified_by": "technical@mislholdings.com",
+ "modified": "2024-12-09 14:21:42.728302",
+ "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
  "onboarding": "Human Resource",
@@ -920,10 +920,18 @@
   },
   {
    "format": "{} Open",
+   "icon": "stock",
    "label": "Dashboard",
-   "link_to": "Human Resource",
+   "link_to": "employee-dashboard",
    "stats_filter": "{\n    \"status\": \"Open\"\n}",
-   "type": "Dashboard"
+   "type": "Page"
+  },
+  {
+   "doc_view": "List",
+   "icon": "star",
+   "label": "Mileage Details",
+   "link_to": "Mileage Details",
+   "type": "DocType"
   }
  ]
 }
