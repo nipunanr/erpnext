@@ -40,11 +40,10 @@
  "icon": "fa fa-compass",
  "idx": 1,
  "links": [],
- "modified": "2021-10-18 14:07:43.722144",
+ "modified": "2026-07-06 15:54:12.520434",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "UOM",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -73,6 +72,13 @@
    "read": 1,
    "report": 1,
    "role": "Stock User"
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director"
   }
  ],
  "quick_entry": 1,

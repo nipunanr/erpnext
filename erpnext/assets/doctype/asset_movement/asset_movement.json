@@ -96,11 +96,10 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-28 16:54:26.571083",
+ "modified": "2026-07-06 15:53:07.046526",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset Movement",
- "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -147,9 +146,23 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "share": 1,
+   "submit": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC",
- "states": []
+ "sort_order": "DESC"
 }

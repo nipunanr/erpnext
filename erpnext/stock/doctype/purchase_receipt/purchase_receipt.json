@@ -1149,7 +1149,7 @@
  "idx": 261,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-06-25 09:11:01.970837",
+ "modified": "2026-07-06 15:54:20.703243",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Purchase Receipt",
@@ -1206,6 +1206,26 @@
    "permlevel": 1,
    "read": 1,
    "role": "Stock Manager",
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Managing Director",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Managing Director",
    "write": 1
   }
  ],

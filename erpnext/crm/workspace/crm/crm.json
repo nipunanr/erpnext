@@ -14,6 +14,7 @@
  "hide_custom": 0,
  "icon": "crm",
  "idx": 0,
+ "is_default": 0,
  "is_standard": 1,
  "label": "CRM",
  "links": [
@@ -363,7 +364,7 @@
    "type": "Link"
   }
  ],
- "modified": "2020-12-01 13:38:36.871352",
+ "modified": "2026-06-25 10:55:18.978923",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CRM",
@@ -402,6 +403,12 @@
    "label": "Dashboard",
    "link_to": "CRM",
    "type": "Dashboard"
+  },
+  {
+   "doc_view": "",
+   "label": "\ud83c\udfe2 EXCO Dashboard",
+   "link_to": "exco-kanban",
+   "type": "Page"
   }
  ]
 }

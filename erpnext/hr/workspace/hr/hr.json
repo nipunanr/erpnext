@@ -877,7 +877,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-12-09 14:21:42.728302",
+ "modified": "2026-06-25 10:58:10.968981",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR",
@@ -932,6 +932,12 @@
    "label": "Mileage Details",
    "link_to": "Mileage Details",
    "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "\ud83c\udfe2 EXCO Dashboard",
+   "link_to": "exco-kanban",
+   "type": "Page"
   }
  ]
 }
